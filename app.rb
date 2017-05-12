@@ -52,6 +52,7 @@ end
 
 post "/brands" do
   brand_name = params.fetch("brand-name")
-  Brand.create({logo: brand_name})
+  brand_price = params["brand-price"]
+  Brand.create({logo: brand_name, price: brand_price})
   redirect "/brands"
 end
