@@ -40,14 +40,8 @@ end
 delete '/store/delete/:id' do
   store = Store.find(params['id'].to_i)
   store.delete
-  redirect '/'
+  redirect '/stores'
 end
-#
-# get '/store/edit/:id' do
-#   @store = Store.find(params['id'].to_i)
-#   erb :shoe_stores_edit
-# end
-
 
 # brand addition and display
 
