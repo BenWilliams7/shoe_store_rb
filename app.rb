@@ -6,5 +6,5 @@ require('./lib/shoe_store')
 require('pg')
 
 get "/" do
-
+  erb :index
 end
