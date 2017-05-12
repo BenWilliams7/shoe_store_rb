@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-6">
+    <h3>View your brands</h3>
+    <h4><%= @brand_message %></h4>
+    <ul>
+      <% Brand.all.each do |brand| %>
+        <h5><a href="/brand/<%= brand.id %>"><%= brand.logo %></a></h5>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <h3>Add a New Brand</h3>
+    <br>
+    <div>
+      <form class="form-group" action="/brands" method="post">
+        <label for="brand-name">Brand Name</label>
+        <input class="form-control" type="text" name="brand-name">
+        <br>
+
+        <button type="submit" class="btn btn-success">Add Brand</button>
+      </form>
+    </div>
+  </div>
+</div>
