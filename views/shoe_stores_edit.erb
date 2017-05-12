@@ -1,0 +1,16 @@
+<h2>Edit <%= @store.name %></h2>
+
+<form action="/rename_store/<%= @store.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Enter the new name for your store:</label><br>
+  <input name="name" type="text" required>
+  <button type="submit" class="buttons float-right">Update Name</button>
+</form>
+<hr>
+
+
+<form action="/store/delete/<%= @store.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="buttons float-right">Delete This Store</button>
+</form>
+<hr>

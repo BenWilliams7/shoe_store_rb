@@ -4,7 +4,7 @@
     <h4><%= @store_message %></h4>
     <ul>
       <% Store.all.each do |store| %>
-        <h5><a href="/store/<%= store.id %>"><%= store.name %></a></h5>
+        <h5><a href="/edit_store/<%= store.id %>"><%= store.name %></a></h5>
       <% end %>
     </ul>
   </div>

@@ -21,34 +21,33 @@ post "/stores" do
   redirect "/stores"
 end
 
-get "store/:id" do
-  @store = Store.find(params['id'].to_i)
-  erb :shoe_stores
+# Update and delete stores
+
+get "/edit_store/:id" do
+  store_id = params['id'].to_i
+  @store = Store.find(store_id)
+  erb :shoe_stores_edit
 end
 
-# Update and delete stores
+patch '/rename_store/:id' do
+  name = params['name']
+  id = params['id'].to_i
+  store = Store.find(id)
+  @store = store.update({name: name})
+  redirect "/edit_store/#{store.id}"
+end
 
 delete '/store/delete/:id' do
   store = Store.find(params['id'].to_i)
   store.delete
   redirect '/'
 end
+#
+# get '/store/edit/:id' do
+#   @store = Store.find(params['id'].to_i)
+#   erb :shoe_stores_edit
+# end
 
-get '/store/edit/:id' do
-  @store = Store.find(params['id'].to_i)
-  erb :shoe_store_edit
-end
-
-patch '/rename_store/:id' do
-  @store = Store.find(params['id'].to_i)
-  name = params['name']
-  @store.update(name: name)
-  # logo = params['logo']
-  # @store.brands.first.update(logo: logo)
-  @store = Store.find(params['id'].to_i)
-  if @store.update(name: name)
-    erb :store
-  end
 
 # brand addition and display
 
