@@ -8,5 +8,11 @@ require "shoulda-matchers"
 
 RSpec.configure do |config|
   config.after(:each) do
-
+    Store.all.each do |recipe|
+      recipe.destroy
+    end
+    Brand.all.each do |recipe|
+      recipe.destroy
+    end
   end
+end
