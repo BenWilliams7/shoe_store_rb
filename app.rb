@@ -1,9 +1,7 @@
-require('sinatra')
-require('sinatra/reloader')
-also_reload('lib/**/*.rb')
-require('sinatra/activerecord')
-require('./lib/shoe_store')
-require('pg')
+require "bundler/setup"
+Bundler.require :default
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
+
 
 get "/" do
   erb :index
@@ -46,17 +44,18 @@ end
 # brand addition and display
 
 get('/brands') do
-  @brand_message = Brand.all.length > 0 ? "Select a brand" : "Add a brand below"
+  # @brand_message = Brand.all.length > 0 ? "Select a brand" : "Add a brand below"
+  @brands = Brand.all
   erb :shoe_brands
 end
 
 post "/brands" do
   brand_name = params.fetch("brand-name")
   brand_price = params["brand-price"]
-  Brand.create({logo: brand_name, price: brand_price})
+  @brand = Brand.create({logo: brand_name, price: brand_price})
+
   redirect "/brands"
 end
-
 
 ## assign brand to store
 get '/store/:id/assign' do

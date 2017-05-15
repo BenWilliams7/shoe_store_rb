@@ -6,7 +6,7 @@
     <% @brands.each do |b| %>
       <div class="checkbox">
         <label>
-          <input type="checkbox" name="b_ids[]" value="<%= b.id %>"><%= b.logo %>
+          <input type="checkbox" name="brand_ids[]" value="<%= b.id %>"><%= b.logo %>
         </label>
       </div>
     <% end %>

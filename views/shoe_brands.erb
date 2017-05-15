@@ -3,7 +3,7 @@
     <h3>View your brands</h3>
     <h4><%= @brand_message %></h4>
     <ul>
-      <% Brand.all.each do |brand| %>
+      <% @brands.all.each do |brand| %>
         <h5><a href="/brand/<%= brand.id %>"><%= brand.logo %> - <%= brand.monetary(brand.price) %></a></h5>
       <% end %>
     </ul>
@@ -17,7 +17,7 @@
         <input class="form-control" type="text" name="brand-name">
         <br>
         <label for="brand-price">Enter Brand Price</label>
-        <input class="form-control" type="number" name="brand-price">
+        <input class="form-control" type="text" name="brand-price">
         <br>
 
         <button type="submit" class="btn btn-success">Add Brand</button>

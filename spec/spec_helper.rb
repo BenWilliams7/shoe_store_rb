@@ -9,11 +9,11 @@ require "capybara"
 
 RSpec.configure do |config|
   config.after(:each) do
-    Store.all.each do |recipe|
-      recipe.destroy
+    Store.all.each do |store|
+      store.destroy
     end
-    Brand.all.each do |recipe|
-      recipe.destroy
+    Brand.all.each do |store|
+      store.destroy
     end
   end
 end
