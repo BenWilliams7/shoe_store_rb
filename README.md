@@ -28,7 +28,7 @@ This site allows users to create, update and delete shoe stores. The user can th
 * Open terminal and navigate to the desktop
 * Clone this repository using command: git clone "insert-url-here"
 * To view in browser run command 'ruby app.rb'
-* Once page has taken stage through Sinatra, type path 'localhost:4567' in browser
+* Type  'localhost:4567' in browser
 * Open code in text editor of choice
 
 * Run command $ postgres in terminal
@@ -49,7 +49,7 @@ This site allows users to create, update and delete shoe stores. The user can th
 * Rake
 
 ## Known Bugs
-At some point (perhaps in validations?) that ability to add
+No known bugs!
 
 ## Support and contact details
 

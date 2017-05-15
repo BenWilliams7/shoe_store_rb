@@ -18,7 +18,6 @@ end
 class Brand < ActiveRecord::Base
   has_and_belongs_to_many :stores
   before_save(:titlecase)
-  # before_save(:monetary())
   validates(:logo, {:presence => true, uniqueness: true, :length => { :maximum => 100}})
   validates(:price, :presence => true)
 
@@ -26,7 +25,7 @@ class Brand < ActiveRecord::Base
     self.logo=(logo.split(/(\W)/).map(&:capitalize).join)
   end
 
-  def self.monetary(price)
+  def monetary(price)
     "$" + sprintf('%.2f', price)
   end
 

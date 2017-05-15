@@ -57,8 +57,7 @@ end
 post "/brands" do
   brand_name = params["brand-name"]
   brand_price = params["brand-price"]
-  price = Brand.monetary(brand_price)
-  @brand = Brand.create({logo: brand_name, price: price})
+  @brand = Brand.create({logo: brand_name, price: brand_price})
 
   redirect '/brands'
 end
