@@ -56,3 +56,21 @@ post "/brands" do
   Brand.create({logo: brand_name, price: brand_price})
   redirect "/brands"
 end
+
+
+## assign brand to store
+get '/store/:id/assign' do
+  @store = Store.find(params['id'].to_i)
+  @brands = Brand.all
+  erb :shoe_brands_assign
+end
+#
+patch '/store/add/:id' do
+  store_id = params['id'].to_i
+  @store = Store.find(store_id)
+  new_ids = @store.brands.map(&:id)
+  brand_ids = params['brand_ids']
+  all_ids = new_ids + brand_ids
+  @store.update({brand_ids: all_ids})
+  redirect "/edit_store/#{store_id}"
+end

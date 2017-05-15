@@ -1,4 +1,4 @@
-<h2>Edit <%= @store.name %></h2>
+<h2>Edit or assign brand to <%= @store.name %></h2>
 
 <form action="/rename_store/<%= @store.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
@@ -14,3 +14,11 @@
   <button type="submit" class="buttons float-right">Delete This Store</button>
 </form>
 <hr>
+<h2>Brands sold at this store:</h2>
+<ul>
+  <% @store.brands.each do |b| %>
+    <li><%= b.logo%></li>
+  <% end %>
+</ul>
+<br>
+<h2><a href="/store/<%= @store.id %>/assign">Click to add a brand to this store</a></h2>

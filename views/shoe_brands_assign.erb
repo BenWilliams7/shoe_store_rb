@@ -1,0 +1,16 @@
+<h1>Assign Brands to <%= @store.name %></h1>
+
+
+  <form action="/store/add/<%= @store.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <% @brands.each do |b| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="b_ids[]" value="<%= b.id %>"><%= b.logo %>
+        </label>
+      </div>
+    <% end %>
+    <button type="submit">Add</button>
+  </form>
+  <br>
+  <p><strong>Click <a href="/brands">here</a> to add more brands</strong></p>
