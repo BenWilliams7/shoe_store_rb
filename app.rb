@@ -1,6 +1,7 @@
 require "bundler/setup"
 Bundler.require :default
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
+require "pry"
 
 
 get "/" do
@@ -54,14 +55,12 @@ get('/brands') do
 end
 
 post "/brands" do
-  brand_name = params.fetch("brand-name")
+  brand_name = params["brand-name"]
   brand_price = params["brand-price"]
-  @brand = Brand.create({logo: brand_name, price: brand_price})
-  if @brand.save
-    redirect '/'
-  else
-    erb :error
-  end
+  price = Brand.monetary(brand_price)
+  @brand = Brand.create({logo: brand_name, price: price})
+
+  redirect '/brands'
 end
 
 ## assign brand to store

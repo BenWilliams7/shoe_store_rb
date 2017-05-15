@@ -4,7 +4,7 @@
     <h4><%= @brand_message %></h4>
     <ul>
       <% @brands.all.each do |brand| %>
-        <h5><a href="/brand/<%= brand.id %>"><%= brand.logo %> - <%= brand.monetary(brand.price) %></a></h5>
+        <h5><a href="/brand/<%= brand.id %>"><%= brand.logo %><%= brand.price %></a></h5>
       <% end %>
     </ul>
   </div>
