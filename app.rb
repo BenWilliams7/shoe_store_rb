@@ -7,9 +7,13 @@ get "/" do
   erb :index
 end
 
+get "/error" do
+  erb :error
+end
+
 # store addition and display
 get('/stores') do
-  @store_message = Store.all.length > 0 ? "Select a store" : "Add a store below"
+  @store_message = Store.all
   erb :shoe_stores
 end
 
@@ -53,8 +57,11 @@ post "/brands" do
   brand_name = params.fetch("brand-name")
   brand_price = params["brand-price"]
   @brand = Brand.create({logo: brand_name, price: brand_price})
-
-  redirect "/brands"
+  if @brand.save
+    redirect '/'
+  else
+    erb :error
+  end
 end
 
 ## assign brand to store
