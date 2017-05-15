@@ -64,7 +64,7 @@ get '/store/:id/assign' do
   @brands = Brand.all
   erb :shoe_brands_assign
 end
-#
+
 patch '/store/add/:id' do
   store_id = params['id'].to_i
   @store = Store.find(store_id)

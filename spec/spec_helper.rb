@@ -4,6 +4,7 @@ require("pg")
 require("sinatra/activerecord")
 require("shoe_store")
 require "shoulda-matchers"
+require "capybara"
 
 
 RSpec.configure do |config|
